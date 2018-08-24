@@ -1,4 +1,4 @@
-# Team I(r)onic
+# Team Transparency
 Summer of Tech Create Camp 2018
 
 ## Designers
