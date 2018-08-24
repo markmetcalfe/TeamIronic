@@ -10,6 +10,6 @@ Summer of Tech Create Camp 2018
 | Name           
 |----------------
 | Geordie Rogers    
-| Liam Bryne 
+| Liam Byrne 
 | Mark Metcalfe   
 | Rodney Cruden-Powell
