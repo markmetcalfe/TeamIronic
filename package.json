@@ -1,0 +1,19 @@
+{
+  "name": "team-ironic",
+  "version": "0.0.1",
+  "description": "Summer of Tech Create Camp 2018",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markmetcalfe/TeamIronic.git"
+  },
+  "author": "Geordie Rogers, Liam Bryne, Mark Metcalfe, Rachel Bolt, Rodney Cruden-Powell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markmetcalfe/TeamIronic/issues"
+  },
+  "homepage": "https://github.com/markmetcalfe/TeamIronic#readme"
+}
