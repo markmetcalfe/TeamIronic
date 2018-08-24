@@ -2,8 +2,9 @@
   "name": "team-ironic",
   "version": "0.0.1",
   "description": "Summer of Tech Create Camp 2018",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
+    "start": "tsc index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,28 @@
   "bugs": {
     "url": "https://github.com/markmetcalfe/TeamIronic/issues"
   },
-  "homepage": "https://github.com/markmetcalfe/TeamIronic#readme"
+  "homepage": "https://github.com/markmetcalfe/TeamIronic#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babelify": "^8.0.0",
+    "browser-sync": "^2.24.6",
+    "browserify": "^16.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^3.2.0",
+    "gulp-ruby-sass": "^3.0.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-typescript": "^5.0.0-alpha.3",
+    "gulp-uglify-es": "^1.0.4",
+    "typescript": "^3.0.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
 }
