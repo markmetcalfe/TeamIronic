@@ -4,7 +4,9 @@ var browserify = require('browserify');
 var browserSync = require('browser-sync');
 var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
-var uglify = require('gulp-uglify-es').default;
+var tsify = require("tsify");
+var ts = require("gulp-typescript");
+var tsProject = ts.createProject("tsconfig.json");
 var $$ = require('gulp-load-plugins')();
 var reload = browserSync.reload;
 
@@ -49,20 +51,21 @@ gulp.task('styles', function() {
 // Scripts
 
 gulp.task('scripts', function() {
-  var b = browserify({
-    entries: devSubFolder.js + 'main.js',
-    debug: true
+  return browserify({
+    basedir: '.',
+    debug: true,
+    entries: [devSubFolder.js+'main.ts'],
+    cache: {},
+    packageCache: {}
   })
-  .transform(babelify);
-
-  return b.bundle()
-  .on('error', $$.notify.onError("Error: <%= error.message %>"))
-  .on('error', handleError)
+  .plugin(tsify)
+  .transform('babelify', {
+    presets: ['es2015'],
+    extensions: ['.ts']
+  })
+  .bundle()
   .pipe(source('bundle.js'))
   .pipe(buffer())
-  .pipe($$.sourcemaps.init({loadMaps: true}))
-  .pipe(uglify.apply())
-  .pipe($$.sourcemaps.write('./'))
   .pipe(gulp.dest(distFolder.js))
   .pipe(reload({ stream:true }));
 });
