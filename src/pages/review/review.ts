@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { TrademeProvider } from '../../providers/trademe/trademe';
+import { Review } from '../../models/review'
 
 @IonicPage()
 @Component({
@@ -9,17 +10,13 @@ import { TrademeProvider } from '../../providers/trademe/trademe';
 })
 export class ReviewPage {
 
-  // ratings defaulted to 3
-  overallRating = 3
-  dampness = 3
-  landlordRating = 3
-  textInput = ""
+  review = {} as Review
 
-  reviewData = []
-
-  constructor(private loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams,
-    private tm: TrademeProvider
-  ) {
+  constructor(private loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams, private tm: TrademeProvider) {
+    this.review.dampness = 3;
+    this.review.landlordRating = 3;
+    this.review.overallRating = 3;
+    this.review.comment = ""
   }
 
   ionViewDidLoad() {
@@ -37,9 +34,7 @@ export class ReviewPage {
       this.navCtrl.pop() 
     }, 1000);
 
-    console.log("Overall rating: " + this.overallRating);
-    console.log("Dampness rating: " + this.dampness);
-    console.log("Landlord rating: " + this.landlordRating);
-    console.log("Written response: " + this.textInput);
+    // submit to firebase
+    console.log(this.review)
   }
 }

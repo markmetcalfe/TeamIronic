@@ -12,6 +12,8 @@ import { ReviewPage } from '../pages/review/review';
 import { HttpClientModule } from '@angular/common/http';
 import { FlatDetailsPage } from '../pages/flat-details/flat-details';
 import { FlatDetailsPageModule } from '../pages/flat-details/flat-details.module';
+import { SearchPage } from '../pages/search/search';
+import { SearchPageModule } from '../pages/search/search.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { FlatDetailsPageModule } from '../pages/flat-details/flat-details.module
     IonicModule.forRoot(MyApp),
     HttpClientModule,
     ReviewPageModule,
+    SearchPageModule,
     FlatDetailsPageModule
   ],
   bootstrap: [IonicApp],
@@ -30,6 +33,7 @@ import { FlatDetailsPageModule } from '../pages/flat-details/flat-details.module
     MyApp,
     HomePage,
     ReviewPage,
+    SearchPage,
     FlatDetailsPage
   ],
   providers: [
