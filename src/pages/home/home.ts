@@ -10,7 +10,7 @@ import { ReviewPage } from '../review/review';
 export class HomePage {
 
   constructor(public navCtrl: NavController, private tm: TrademeProvider) {
-
+  
   }
 
   toReview(){
