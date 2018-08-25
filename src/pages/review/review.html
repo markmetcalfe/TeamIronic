@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label>Overall = {{overallRating}}</ion-label>
+    <ion-label>Overall = {{review.overallRating}}</ion-label>
     <ion-range min="1" max="5" step="1" snaps=true [(ngModel)]="review.overallRating">
       <ion-icon small range-left name="1"></ion-icon>
       <ion-icon range-right name="5"></ion-icon>
@@ -23,7 +23,7 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>Dampness = {{dampness}}</ion-label>
+    <ion-label>Dampness = {{review.dampness}}</ion-label>
     <ion-range min="1" max="5" step="1" snaps=true [(ngModel)]="review.dampness">
       <ion-icon small range-left name="1"></ion-icon>
       <ion-icon range-right name="5"></ion-icon>
@@ -31,7 +31,7 @@
   </ion-item>
 
   <ion-item>
-    <ion-label>Landlord = {{landlordRating}}</ion-label>
+    <ion-label>Landlord = {{review.landlordRating}}</ion-label>
     <ion-range min="1" max="5" step="1" snaps=true [(ngModel)]="review.landlordRating">
       <ion-icon small range-left name="1"></ion-icon>
       <ion-icon range-right name="5"></ion-icon>

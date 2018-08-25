@@ -16,6 +16,6 @@ export class HomePage {
   }
 
   toSearch(){
-    this.navCtrl.push(SearchPage);
+    this.navCtrl.push(ReviewPage);
   }
 }
