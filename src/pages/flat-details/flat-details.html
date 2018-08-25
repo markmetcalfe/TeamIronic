@@ -6,26 +6,37 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Details for {{address}}</ion-title>
-  </ion-navbar>
-</ion-header>
-
-
-<ion-content padding>
-
-  <ion-item>
-    <img src="https://vault.grogers.xyz/create-camp/tmp-house.png" height="100" width="100">
-    <h2 ion-text style="float: right;">{{address}}, {{suburb}}, {{city}}</h2>
-    <h2 ion-text style="float: right; font-size: 60px;">{{getAverage()}}</h2>
-  </ion-item>
-
-  <ion-item>
-    <h2 ion-text>💧 Dampness Rating: {{dampnessRating}}</h2>
-  </ion-item>
-
-  <ion-item>
-    <h2 ion-text>👹  Land Lord Rating: {{landlordRating}}</h2>
-  </ion-item>
-
-</ion-content>
+    <ion-navbar>
+      <ion-title>Details for {{address}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+              <img src="https://vault.grogers.xyz/create-camp/tmp-house.png">
+          </ion-col>
+          <ion-col>
+              <h2 ion-text>{{address}}</h2>
+              <h2 ion-text>{{suburb}}</h2>
+              <h2 ion-text>{{city}}</h2>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <h1 ion-text>Average Score: {{getAverage()}}</h1>
+    </ion-item>
+  
+    <ion-item>
+      <h2 ion-text>💧 Dampness Rating: {{dampnessRating}}</h2>
+    </ion-item>
+  
+    <ion-item>
+      <h2 ion-text>👹  Land Lord Rating: {{landlordRating}}</h2>
+    </ion-item>
+  
+  </ion-content>
+  
