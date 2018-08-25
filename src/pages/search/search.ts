@@ -15,7 +15,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
+  wholeFlat = true
+  priceMin = "$0"
+  priceMax = "and $800+"
+  suburb = "2129"
+  bedrooms = "Any"
+  propType = "All"
+  petsOK = false
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  submit(){
+    console.log("WholeFlat: "+this.wholeFlat)
+    console.log("Price: "+this.priceMin+" to "+this.priceMax)
+    console.log("Suburb: "+this.suburb)
+    console.log("Bed: "+this.bedrooms)
+    console.log("Prop "+this.propType)
+    console.log("Pets: "+this.petsOK)
   }
 
   ionViewDidLoad() {
