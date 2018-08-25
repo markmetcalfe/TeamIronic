@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { OverlayPortal } from 'ionic-angular/umd/components/app/overlay-portal';
 
 /**
  * Generated class for the FlatDetailsPage page.
@@ -16,8 +17,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class FlatDetailsPage {
 
   address = "123 Fake Address, FakeTown"
+  overallRating = 5
+  dampnessRating = 4
+  landlordRating = 5
+
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  getAverage(){
+    return ((this.overallRating+this.dampnessRating+this.landlordRating)/3).toFixed(1);
   }
 
   ionViewDidLoad() {
