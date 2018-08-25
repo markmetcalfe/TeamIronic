@@ -21,7 +21,15 @@ export class TrademeProvider {
     })
   }
 
-  request(requestString): Promise<Array<Listing>> {
+  public getSuburb(suburb: Suburb, adjacent_suburbs?: boolean): Promise<Array<Listing>> {
+    return this.request(`adjacent_suburbs=${adjacent_suburbs}&rows=50&suburb=${suburb.id}`);
+  }
+
+  public getRegion(region: Region): Promise<Array<Listing>> {
+    return this.request(``)
+  }
+
+  private request(requestString: String): Promise<Array<Listing>> {
     return new Promise(res => {
       this.http.get(
         `${this.trademeUrl}${requestString}`, { 
