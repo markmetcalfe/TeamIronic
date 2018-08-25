@@ -17,9 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
     HomePage
   ],
   imports: [
-    HttpClientModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule,
     ReviewPageModule
   ],
   bootstrap: [IonicApp],
