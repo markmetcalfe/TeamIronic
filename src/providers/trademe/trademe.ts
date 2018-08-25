@@ -61,6 +61,14 @@ export class TrademeProvider {
     });
   }
 
+  public suburbs(): Array<Suburb> {
+   return [
+      new Suburb(1345, "Kelburn", 47),
+      new Suburb(1486, "Te Aro", 47),
+      new Suburb(1559, "Thorndon", 47)
+    ]
+  }
+
   public search(search_options: SearchOptions): Promise<Array<Listing>> {
     let params = "";
     Object.keys(search_options).forEach(key => {
