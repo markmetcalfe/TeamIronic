@@ -15,6 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SearchPage {
 
+  wholeFlat = true
+  priceMin = "$0"
+  priceMax = "and $800+"
+  suburb = "Any"
+  bedrooms = "Any"
+  propType = "All"
+  petsOK = false
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
