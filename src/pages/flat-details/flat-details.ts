@@ -16,7 +16,9 @@ import { OverlayPortal } from 'ionic-angular/umd/components/app/overlay-portal';
 })
 export class FlatDetailsPage {
 
-  address = "123 Fake Address, FakeTown"
+  address = "123 Fake Address"
+  suburb = "Thorndon"
+  city = "Wellington"
   overallRating = 5
   dampnessRating = 4
   landlordRating = 5
