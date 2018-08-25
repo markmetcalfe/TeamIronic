@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TrademeProvider } from '../../providers/trademe/trademe';
-import { ReviewPage } from '../review/review';
+import { FlatDetailsPage } from '../flat-details/flat-details';
 
 @Component({
   selector: 'page-home',
@@ -15,6 +15,6 @@ export class HomePage {
 
   toReview(){
     console.log("clicked");
-    this.navCtrl.push(ReviewPage);
+    this.navCtrl.push(FlatDetailsPage);
   }
 }

@@ -10,6 +10,8 @@ import { TrademeProvider } from '../providers/trademe/trademe';
 import { ReviewPageModule } from '../pages/review/review.module';
 import { ReviewPage } from '../pages/review/review';
 import { HttpClientModule } from '@angular/common/http';
+import { FlatDetailsPage } from '../pages/flat-details/flat-details';
+import { FlatDetailsPageModule } from '../pages/flat-details/flat-details.module';
 
 @NgModule({
   declarations: [
@@ -20,13 +22,15 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    ReviewPageModule
+    ReviewPageModule,
+    FlatDetailsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ReviewPage
+    ReviewPage,
+    FlatDetailsPage
   ],
   providers: [
     StatusBar,
