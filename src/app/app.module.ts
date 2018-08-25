@@ -1,22 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {RouterModule} from '@angular/router';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
 
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { ReviewComponent } from './review/review.component';
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { TrademeProvider } from '../providers/trademe/trademe';
+import { ReviewPageModule } from '../pages/review/review.module';
+import { ReviewPage } from '../pages/review/review';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ReviewComponent
+    MyApp,
+    HomePage
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
-    AppRoutingModule,
-    RouterModule
+    IonicModule.forRoot(MyApp),
+    ReviewPageModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    HomePage,
+    ReviewPage
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    TrademeProvider
+  ]
 })
-export class AppModule { }
+export class AppModule {}
