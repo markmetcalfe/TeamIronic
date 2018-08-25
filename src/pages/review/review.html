@@ -12,14 +12,38 @@
 
 </ion-header>
 
-<ion-item>
-  <ion-range min="20" max="80" step="2" [(ngModel)]="brightness">
-    <ion-icon small range-left name="sunny"></ion-icon>
-    <ion-icon range-right name="sunny"></ion-icon>
-  </ion-range>
-</ion-item>
-
 
 <ion-content padding>
+  <ion-item>
+    <ion-label>Overall = {{overallRating}}</ion-label>
+    <ion-range min="1" max="5" step="1" snaps=true [(ngModel)]="overallRating">
+      <ion-icon small range-left name="1"></ion-icon>
+      <ion-icon range-right name="5"></ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Dampness = {{dampness}}</ion-label>
+    <ion-range min="1" max="5" step="1" snaps=true [(ngModel)]="dampness">
+      <ion-icon small range-left name="1"></ion-icon>
+      <ion-icon range-right name="5"></ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Landlord = {{landlordRating}}</ion-label>
+    <ion-range min="1" max="5" step="1" snaps=true [(ngModel)]="landlordRating">
+      <ion-icon small range-left name="1"></ion-icon>
+      <ion-icon range-right name="5"></ion-icon>
+    </ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-textarea placeholder="Anything else?" [(ngModel)]="textInput"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <button ion-button (click)="submit()">Submit</button>
+  </ion-item>
 
 </ion-content>
