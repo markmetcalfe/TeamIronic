@@ -5,6 +5,7 @@ import { Review } from '../../models/review'
 import { AngularFireDatabase } from "angularfire2/database";
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FlatDetailsPage } from '../flat-details/flat-details';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -40,8 +41,6 @@ export class ReviewPage {
     console.log(this.review)
     
     //go to flat
-    this.navCtrl.push(FlatDetailsPage, {
-      review: this.review
-    })
+    this.navCtrl.push(HomePage)
   }
 }

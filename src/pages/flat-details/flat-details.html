@@ -12,12 +12,12 @@
     <ion-grid>
       <ion-row>
         <ion-col col-auto>
-          <img src="https://vault.grogers.xyz/create-camp/tmp-house.png" height="100" width="100">
+          <img src="{{listing.photos[0].url}}" height="100" width="100">
         </ion-col>
         <ion-col col-auto text-left>
-          <h2 ion-text><b>{{address}}</b></h2>
-          <h2 ion-text>{{suburb}}</h2>
-          <h2 ion-text>{{city}}</h2>
+          <h2 ion-text><b>{{flat.address}}</b></h2>
+          <h2 ion-text>{{flat.suburb}}</h2>
+          <h2 ion-text>{{flat.city}}</h2>
         </ion-col>
       </ion-row>
 
@@ -43,7 +43,7 @@
         <ion-item *ngIf="displayRatings===true">
           <ion-row>
             <ion-col col-2 class="emoji">
-              <h2 ion-text>{{landlordRating
+              <h2 ion-text>{{flat.landlordRating
                 < 3 ? "💧" : "🌵"}}
               </h2>
             </ion-col>
@@ -51,12 +51,12 @@
               <h2 ion-text>Dampness Rating: </h2>
             </ion-col>
             <ion-col text-right>
-              <h2 ion-text><b>{{dampnessRating}}</b><span class="review-score">/5</span></h2>
+              <h2 ion-text><b>{{flat.dampnessRating}}</b><span class="review-score">/5</span></h2>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col col-2 class="emoji">
-              <h2 ion-text>{{landlordRating
+              <h2 ion-text>{{flat.landlordRating
                 < 3 ? "👿" : "😇"}}
               </h2>
             </ion-col>
@@ -64,7 +64,7 @@
                 <h2 ion-text>Landlord Rating: </h2>
               </ion-col>
             <ion-col text-right>
-                <h2 ion-text><b>{{landlordRating}}</b><span class="review-score">/5</span></h2>
+                <h2 ion-text><b>{{flat.landlordRating}}</b><span class="review-score">/5</span></h2>
             </ion-col>
           </ion-row>
         </ion-item>
@@ -82,14 +82,18 @@
     <!-- END Flat Information -->
   </ion-item>
 
-  <!-- <ion-item>
-    <h2 ion-text>💧 Dampness Rating: {{dampnessRating}}</h2>
+  <ion-item>
+    <ion-label>Trevor Mallard</ion-label>
+    
+    <!-- <h2 ion-text><span class="heading-score">{{getAverage()}}</span>/5</h2> -->
   </ion-item>
-  <!-- END Flat Ratings -->
+  <ion-item>
+    <p>"My landlord was pretty good, not a bad place for a group of second year students"</p>
+    <h2 ion-text style="float: right;"><span class="heading-score">{{getAverage()}}</span>/5</h2>
+  </ion-item>
 
-  <!-- Flat Reviews -->
-  <!-- <ion-item>
-    <h2 ion-text>👹 Land Lord Rating: {{landlordRating}}</h2>
-  </ion-item> -->
+  <ion-item>
+    <button ion-button large full (click)="goReview()">Write a Review</button>
+  </ion-item>
 
 </ion-content>
