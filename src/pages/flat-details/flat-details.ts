@@ -23,8 +23,6 @@ export class FlatDetailsPage {
   dampnessRating = 4
   landlordRating = 5
 
-
-
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
