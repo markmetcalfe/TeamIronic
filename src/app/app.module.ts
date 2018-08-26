@@ -14,6 +14,10 @@ import { FlatDetailsPage } from '../pages/flat-details/flat-details';
 import { FlatDetailsPageModule } from '../pages/flat-details/flat-details.module';
 import { SearchPage } from '../pages/search/search';
 import { SearchPageModule } from '../pages/search/search.module';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FIREBASE_CONFIG } from './app.firebase.config';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ResultsPageModule } from '../pages/results/results.module';
 import { ResultsPage } from '../pages/results/results';
 
@@ -25,6 +29,9 @@ import { ResultsPage } from '../pages/results/results';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
     HttpClientModule,
     ReviewPageModule,
     SearchPageModule,
