@@ -1,13 +1,12 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Review Your Flat
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  <h1>Review Your Flat</h1>
-  <br>
-  <button ion-button full large (click)="toSearch()">Search</button>
+<ion-content padding text-center>
+  <ion-grid>
+    <ion-row justify-content-center align-items-center>
+      <ion-col>
+        <h1>Some App Title</h1>
+        <button ion-button (click)="toSearch()">Begin</button>
+        <button ion-button (click)="t1()">T1</button>
+        <button ion-button (click)="t2()">T2</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

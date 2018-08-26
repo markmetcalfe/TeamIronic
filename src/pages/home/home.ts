@@ -16,6 +16,14 @@ export class HomePage {
   }
 
   toSearch(){
-    this.navCtrl.push(ReviewPage);
+    this.navCtrl.setRoot(SearchPage);
+  }
+
+  t1() {
+    this.navCtrl.push(FlatDetailsPage)
+  }
+
+  t2() {
+    this.navCtrl.push(ReviewPage)
   }
 }
