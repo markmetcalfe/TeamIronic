@@ -101,7 +101,8 @@ export class TrademeProvider {
 }
 
 export interface SearchOptions {
-  suburb?: Suburb, 
+  //suburb?: Suburb, 
+  suburb?: number,
   city?: City, 
   region?: Region, 
   search_string?: String, 
@@ -209,8 +210,13 @@ export class Photo {
 
   constructor(private id: number){
     this.id = id;
-    this.url = `https://trademe.tmcdn.co.nz/photoserver/plus/${this.id}.jpg`
+    if(id<0)
+      this.url = 'https://i.imgur.com/6GDfMuj.png';
+    else
+      this.url = `https://trademe.tmcdn.co.nz/photoserver/plus/${this.id}.jpg`
   }
+
+  
 }
 
 class PhotoFactory {
@@ -220,6 +226,8 @@ class PhotoFactory {
     if(firstPhotoUrl && photoUrlArray){
       this.photos.push( new Photo(this.parseUrlString(firstPhotoUrl)) );
       photoUrlArray.forEach(url => this.photos.push( new Photo(this.parseUrlString(url)) ));
+    } else {
+      this.photos.push( new Photo(-1) );
     }
   }
 
