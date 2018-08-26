@@ -1,7 +1,7 @@
 export interface Flat {
-    address: string
-    suburb: string
-    city: string
+    address: String
+    suburb: String
+    city: String
     overallRating: number
     dampnessRating: number
     landlordRating: number

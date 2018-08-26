@@ -25,6 +25,10 @@ export class ResultsPage {
     return item.address || "No address listed"
   }
 
+  getRandom(){
+    return 4.7
+  }
+
   goto(item){
     console.log(item);
     this.navCtrl.push(

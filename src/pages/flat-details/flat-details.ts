@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { TrademeProvider, Listing } from '../../providers/trademe/trademe';
 import { Flat } from '../../models/flat';
+import { ReviewPage } from '../review/review';
 
 /**
  * Generated class for the FlatDetailsPage page.
@@ -23,19 +24,25 @@ export class FlatDetailsPage {
 
   flat = {} as Flat
   reviews: Review[]
+  public listing: Listing
 
   displayRatings: boolean;
 
   constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, public trademe: TrademeProvider) {
     // mock data
-    this.flat.address = "another fake street"
-    this.flat.suburb = "Thorndon"
+     this.listing = this.navParams.get('item') as Listing
+
+    console.log(this.listing)
+
+    this.flat.address = this.listing.address ? this.listing.address : "not-specified"
+    this.flat.suburb = this.listing.suburb.name ? this.listing.suburb.name : "not-specified"
     this.flat.city = "Wellington"
     this.flat.overallRating = 5
     this.flat.dampnessRating = 4
     this.flat.landlordRating = 5
     
     let review = this.navParams.get('review') as Review
+
 
     this.afDatabase.database.ref('/flats/').once('value', (snapshot) => {
       snapshot.forEach((snap) => {
@@ -57,6 +64,10 @@ export class FlatDetailsPage {
 
   toggleRatings(){
     this.displayRatings = !this.displayRatings
+  }
+
+  goReview(){
+    this.navCtrl.push(ReviewPage)
   }
 
   ionViewDidLoad() {
