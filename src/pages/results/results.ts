@@ -24,6 +24,10 @@ export class ResultsPage {
     console.log('ionViewDidLoad ResultsPage');
   }
 
+  getAddress(item) {
+    return item.address || "No address listed"
+  }
+
   goto(item){
     console.log(item);
     this.navCtrl.push(
