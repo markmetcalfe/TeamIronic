@@ -24,6 +24,8 @@ export class FlatDetailsPage {
   flat = {} as Flat
   reviews: Review[]
 
+  displayRatings: boolean;
+
   constructor(private afAuth: AngularFireAuth, private afDatabase: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams, public trademe: TrademeProvider) {
     // mock data
     this.flat.address = "another fake street"
