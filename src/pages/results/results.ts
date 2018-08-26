@@ -13,9 +13,6 @@ export class ResultsPage {
   results: Array<Listing>
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewWillEnter(){
     this.results = this.navParams.get('results');
     console.log(this.results[0])
   }
