@@ -4,6 +4,7 @@ import { TrademeProvider } from '../../providers/trademe/trademe';
 import { Review } from '../../models/review'
 import { AngularFireDatabase } from "angularfire2/database";
 import { AngularFireAuth } from 'angularfire2/auth';
+import { FlatDetailsPage } from '../flat-details/flat-details';
 
 @IonicPage()
 @Component({
@@ -33,14 +34,14 @@ export class ReviewPage {
     loading.present();
     setTimeout(() => {
       loading.dismiss();
-      this.navCtrl.pop() 
     }, 1000);
 
     // submit to firebase
     console.log(this.review)
     
-    this.afAuth.authState.take(1).subscribe(() => {
-      this.afDatabase.object(`reviews/${this.review.comment}`).set(this.review)
-    });
+    //go to flat
+    this.navCtrl.push(FlatDetailsPage, {
+      review: this.review
+    })
   }
 }
