@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { TrademeProvider } from '../../providers/trademe/trademe';
 
 /**
  * Generated class for the SearchPage page.
@@ -16,17 +17,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class SearchPage {
 
   wholeFlat = true
-  priceMin = "$0"
-  priceMax = "and $800+"
-  suburb = "2129"
-  bedrooms = "Any"
+  priceMin = 0
+  priceMax = 800
+  suburb = 2129
+  bedrooms = 2
   propType = "All"
   petsOK = false
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private tm: TrademeProvider) {
   }
 
   submit(){
+
+    
+    this.tm.search({
+
+    })
     console.log("WholeFlat: "+this.wholeFlat)
     console.log("Price: "+this.priceMin+" to "+this.priceMax)
     console.log("Suburb: "+this.suburb)

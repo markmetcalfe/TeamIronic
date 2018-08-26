@@ -22,12 +22,17 @@ export class FlatDetailsPage {
   overallRating = 5
   dampnessRating = 4
   landlordRating = 5
+  displayRatings = false
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   getAverage(){
     return ((this.overallRating+this.dampnessRating+this.landlordRating)/3).toFixed(1);
+  }
+
+  toggleRatings(){
+    this.displayRatings = !this.displayRatings
   }
 
   ionViewDidLoad() {
