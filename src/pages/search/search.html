@@ -6,6 +6,14 @@
 
 <ion-content>
   <ion-item>
+    <ion-searchbar
+      [(ngModel)]="searchQuery"
+      [showCancelButton]="shouldShowCancel"
+      placeholder="Search terms">
+    </ion-searchbar>
+  </ion-item>
+
+  <ion-item>
     <ion-segment [(ngModel)]="relationship" color="primary">
       <ion-segment-button value="Whole Flat" (ionSelect)="wholeFlat=true">
         Whole Flat
@@ -24,14 +32,24 @@
     </ion-item>
 
   <ion-item>
-    <ion-label>Bedrooms</ion-label>
-    <ion-select [(ngModel)]="bedrooms">
-      <ion-option value=0>Any</ion-option>
-      <ion-option value=1>1</ion-option>
-      <ion-option value=2>2</ion-option>
-      <ion-option value=3>3</ion-option>
-      <ion-option value=4>4+</ion-option>
-    </ion-select>
+    <ion-label>Bedrooms between</ion-label>    
+    <ion-select [(ngModel)]="bedroomsMin">
+        <ion-option value=1>1</ion-option>
+        <ion-option value=2>2</ion-option>
+        <ion-option value=3>3</ion-option>
+        <ion-option value=4>4</ion-option>
+        <ion-option value=5>5</ion-option>
+        <ion-option value=6>6+</ion-option>
+      </ion-select>
+      and
+      <ion-select [(ngModel)]="bedroomsMax">
+        <ion-option value=1>1</ion-option>
+        <ion-option value=2>2</ion-option>
+        <ion-option value=3>3</ion-option>
+        <ion-option value=4>4</ion-option>
+        <ion-option value=5>5</ion-option>
+        <ion-option value=6>6+</ion-option> 
+      </ion-select>
   </ion-item>
 
   <ion-item>
