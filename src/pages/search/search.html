@@ -28,10 +28,7 @@
     <ion-item>
       <ion-label>Suburb</ion-label>
       <ion-select [(ngModel)]="suburb">
-        <ion-option value=0>Any</ion-option>
-        <ion-option value=1345>Kelburn</ion-option>
-        <ion-option value=1486>Te Aro</ion-option>
-        <ion-option value=1559>Thorndon</ion-option>
+        <ion-option *ngFor="let s of this.suburbs" value="{{s.id}}">{{s.name}}</ion-option>
       </ion-select>
     </ion-item>
 

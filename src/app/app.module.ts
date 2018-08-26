@@ -14,6 +14,8 @@ import { FlatDetailsPage } from '../pages/flat-details/flat-details';
 import { FlatDetailsPageModule } from '../pages/flat-details/flat-details.module';
 import { SearchPage } from '../pages/search/search';
 import { SearchPageModule } from '../pages/search/search.module';
+import { ResultsPageModule } from '../pages/results/results.module';
+import { ResultsPage } from '../pages/results/results';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { SearchPageModule } from '../pages/search/search.module';
     HttpClientModule,
     ReviewPageModule,
     SearchPageModule,
-    FlatDetailsPageModule
+    FlatDetailsPageModule,
+    ResultsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +37,8 @@ import { SearchPageModule } from '../pages/search/search.module';
     HomePage,
     ReviewPage,
     SearchPage,
-    FlatDetailsPage
+    FlatDetailsPage,
+    ResultsPage
   ],
   providers: [
     StatusBar,
