@@ -54,7 +54,7 @@ export class FlatDetailsPage {
   }
 
   toggleRatings(){
-    this.displayRatings = !this.displayRatings
+    //this.displayRatings = !this.displayRatings
   }
 
   ionViewDidLoad() {

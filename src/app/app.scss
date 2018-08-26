@@ -14,3 +14,13 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+$small_mobile: "screen and (max-width:340px)";
+$mobile: "screen and (max-width:768px)";
+$not_mobile: "screen and (min-width:768px)";
+$tablet: "screen and (min-width:768px) and (max-width:991px)";
+$big_tablet: "screen and (min-width:991px) and (max-width:1200px)";
+$laptop: "screen and (min-width:1200px) and (max-width:1600px)";
+$desktop: "screen and (min-width:1600px)";
+$browser: "screen and (min-width:1200px)";
+$device: "screen and (max-width:1200px)";

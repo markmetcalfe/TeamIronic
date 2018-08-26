@@ -1,3 +1,83 @@
 page-results {
-
+  .listing-card {
+    ion-card {
+      display: inline-block;
+    }
+    .card-content {
+      padding: 8px 10px;
+      font-size: 1.5em;
+    }
+    a {
+      text-decoration: none;
+    }
+    .col {
+      white-space: nowrap;
+      overflow: inherit;
+      
+      .overflow-alt {
+        display: none;
+      }
+      .overflow-hidden {
+        display: inline;
+      }
+  
+      @media screen and (max-width: 961px) {
+        .overflow-alt {
+          display: inline;
+        }
+        .overflow-hidden {
+          display: none;
+        }
+      }
+    }
+    .listing {
+      @media #{$mobile} {
+        width: calc(100% - 20px);
+      }
+      @media #{$tablet} {
+        width: calc(50% - 20px);
+      }
+      @media #{$big_tablet} {
+        width: calc(33.33% - 20px);
+      }
+      @media #{$laptop} {
+        width: calc(33.33% - 20px);
+      }
+      @media #{$desktop} {
+        width: calc(25% - 20px);
+      }
+    }
+    .listing img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      @media #{$laptop} {
+        height: 220px;
+      }
+      @media #{$desktop} {
+        height: 280px;
+      }
+    }
+    a ion-card-content * {
+      text-decoration: none;
+    }
+    .additional-content {
+      display: none;
+    }
+  }
+  listing-card[inner-content] {
+    .additional-content {
+      display: block;
+      width: 100%;
+      color: #000;
+      user-select: text;
+    }
+    .additional-content:before {
+      display: block;
+      content: " ";
+      width: 100%;
+      border-top: solid 1px #d3d3d3;
+    }
+  }
+  
 }
