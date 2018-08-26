@@ -30,3 +30,10 @@ ion-content {
   font-size: 1.75em;
   font-weight: bold;
 }
+
+.toolbar > .toolbar-background {
+  background-color: map-get($colors, primary);
+}
+.toolbar > .toolbar-content, .toolbar .toolbar-title,  .toolbar > .bar-button {
+  color: #fdfdfd !important;
+}
