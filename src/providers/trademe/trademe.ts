@@ -72,8 +72,10 @@ export class TrademeProvider {
   public search(search_options: SearchOptions): Promise<Array<Listing>> {
     let params = "";
     Object.keys(search_options).forEach(key => {
-      params += `${key}=${search_options[key]}`;
+      if(search_options[key])
+        params += `${key}=${search_options[key]}&`;
     });
+    params = params.substring(0, params.length - 1);
     return this.request(`https://api.trademe.co.nz/v1/Search/Property/Rental.json?`, params).then(data => {
       return this.locations().then(locations => {
         let items = [];
@@ -86,6 +88,7 @@ export class TrademeProvider {
   }
 
   private request(baseUrl: String, requestString: String): Promise<any> {
+    console.log("request string", requestString);
     return new Promise(res => {
       this.http.get(
         `${baseUrl}${requestString}`, { 
@@ -215,8 +218,6 @@ export class Photo {
     else
       this.url = `https://trademe.tmcdn.co.nz/photoserver/plus/${this.id}.jpg`
   }
-
-  
 }
 
 class PhotoFactory {
