@@ -20,6 +20,7 @@
           <h2 ion-text>{{city}}</h2>
         </ion-col>
       </ion-row>
+
       <ion-row align-items-center>
         <ion-col>
           <h2 ion-text class="heading">Overall Rating</h2>
@@ -27,6 +28,46 @@
         <ion-col text-right>
           <h2 ion-text><span class="heading-score">{{getAverage()}}</span>/5</h2>
         </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-item>
+          <button ion-button padding full outline (click)="toggleRatings()">{{displayRatings ? "Hide" : "Show"}} Individual
+            Ratings
+          </button>
+        </ion-item>
+      </ion-row>
+
+      <ion-row>
+        <!-- Flat Ratings -->
+        <ion-item *ngIf="displayRatings===true">
+          <ion-row>
+            <ion-col col-2 class="emoji">
+              <h2 ion-text>{{landlordRating
+                < 3 ? "💧" : "🌵"}}
+              </h2>
+            </ion-col>
+            <ion-col text-left>
+              <h2 ion-text>Dampness Rating: </h2>
+            </ion-col>
+            <ion-col text-right>
+              <h2 ion-text><b>{{dampnessRating}}</b><span class="review-score">/5</span></h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-2 class="emoji">
+              <h2 ion-text>{{landlordRating
+                < 3 ? "👿" : "😇"}}
+              </h2>
+            </ion-col>
+            <ion-col text-left>
+                <h2 ion-text>Landlord Rating: </h2>
+              </ion-col>
+            <ion-col text-right>
+                <h2 ion-text><b>{{landlordRating}}</b><span class="review-score">/5</span></h2>
+            </ion-col>
+          </ion-row>
+        </ion-item>
       </ion-row>
       <ion-row align-items-center>
         <ion-col>
@@ -36,31 +77,9 @@
           <h2 ion-text>See All</h2>
         </ion-col>
       </ion-row>
+
     </ion-grid>
-     <!-- END Flat Information -->
-     <ion-item>
-        <button ion-button full outline (click)="toggleRatings()">{{displayRatings ? "Hide" : "Show"}} Individual Ratings</button>
-      </ion-item>
-    </ion-item>
-  
-    <!-- Flat Ratings -->
-    <ion-item *ngIf="displayRatings===true">
-      <ion-row>
-        <ion-col>
-          <h2 ion-text>{{landlordRating<3 ? "💧" : "🌵"}} Dampness Rating: </h2>
-        </ion-col>
-        <ion-col>
-          <h2 ion-text style="float: right;">{{dampnessRating}}</h2>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <h2 ion-text>{{landlordRating<3 ? "👿" : "😇"}}  Land Lord Rating: </h2>
-        </ion-col>
-        <ion-col>
-            <h2 ion-text style="float: right;">{{landlordRating}}</h2>
-        </ion-col>
-      </ion-row>
+    <!-- END Flat Information -->
   </ion-item>
 
   <!-- <ion-item>
@@ -69,7 +88,7 @@
   <!-- END Flat Ratings -->
 
   <!-- Flat Reviews -->
-  <ion-item>
+  <!-- <ion-item>
     <h2 ion-text>👹 Land Lord Rating: {{landlordRating}}</h2>
   </ion-item> -->
 
