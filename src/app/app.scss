@@ -19,6 +19,11 @@
   font-family: "Roboto Light"
 }
 
+ion-content {
+  background-image: url("../../assets/imgs/bg2.png");
+  background-size: cover;
+}
+
 .heading-score {
   font-size: 1.75em;
   font-weight: bold;

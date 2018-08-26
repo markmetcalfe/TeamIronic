@@ -5,8 +5,14 @@ page-home {
   }
 
   h1 {
+    font-size: 3em;
+    font-family: "Roboto";
     line-height: 50%;
-    padding-bottom: 0.5em;
+    padding-bottom: 0.25em;
+  }
+
+  ion-content {
+    background-image: url("../../assets/imgs/bg1.png");
   }
 
 }
