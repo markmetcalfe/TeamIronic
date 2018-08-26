@@ -8,4 +8,11 @@ page-results {
     padding: 0;
   }
 
+  .nolistings {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top: 3em !important;
+    color: rgba(0,0,0,0.8);
+  }
 }
