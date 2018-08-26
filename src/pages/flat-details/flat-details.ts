@@ -53,6 +53,10 @@ export class FlatDetailsPage {
     return ((this.flat.overallRating+this.flat.dampnessRating+this.flat.landlordRating)/3).toFixed(1);
   }
 
+  toggleRatings(){
+    this.displayRatings = !this.displayRatings
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad FlatDetailsPage');
   }

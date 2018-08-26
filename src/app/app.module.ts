@@ -18,6 +18,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { ResultsPageModule } from '../pages/results/results.module';
+import { ResultsPage } from '../pages/results/results';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     HttpClientModule,
     ReviewPageModule,
     SearchPageModule,
-    FlatDetailsPageModule
+    FlatDetailsPageModule,
+    ResultsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +44,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     HomePage,
     ReviewPage,
     SearchPage,
-    FlatDetailsPage
+    FlatDetailsPage,
+    ResultsPage
   ],
   providers: [
     StatusBar,

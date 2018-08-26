@@ -7,12 +7,78 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>search-page</ion-title>
+    <ion-title>Search</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-item>
+    <ion-segment [(ngModel)]="relationship" color="primary">
+        <ion-segment-button value="Whole Flat" (ionSelect)="wholeFlat=true">
+          Whole Flat
+        </ion-segment-button>
+        <ion-segment-button value="Joint Flat" (ionSelect)="wholeFlat=false">
+          Joint Flat
+        </ion-segment-button>
+      </ion-segment>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Suburb</ion-label>
+      <ion-select [(ngModel)]="suburb">
+        <ion-option *ngFor="let s of this.suburbs" value="{{s.id}}">{{s.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Bedrooms</ion-label>
+      <ion-select [(ngModel)]="bedrooms">
+        <ion-option value=0>Any</ion-option>
+        <ion-option value=1>1</ion-option>
+        <ion-option value=2>2</ion-option>
+        <ion-option value=3>3</ion-option>
+        <ion-option value=4>4+</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Price P/W Between</ion-label>
+      <ion-select [(ngModel)]="priceMin">
+          <ion-option value=0>$0</ion-option>
+          <ion-option value=100>$100</ion-option>
+          <ion-option value=200>$200</ion-option>
+          <ion-option value=300>$300</ion-option>
+          <ion-option value=400>$400</ion-option>
+        </ion-select>
+        <ion-select [(ngModel)]="priceMax">
+            <ion-option value=200>and $200</ion-option>
+            <ion-option value=400>and $400</ion-option>
+            <ion-option value=600>and $600</ion-option>
+            <ion-option value=800>and $800+</ion-option>
+          </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Property Type</ion-label>
+        <ion-select [(ngModel)]="propType">
+          <ion-option>All</ion-option>
+          <ion-option>Apartment</ion-option>
+          <ion-option>Car Park</ion-option>
+          <ion-option>House</ion-option>
+          <ion-option>Townhouse</ion-option>
+          <ion-option>Unit</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Pets OK</ion-label>
+        <ion-toggle [(ngModel)]="petsOK"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <button ion-button full large (click)="submit()">VIEW FLATS</button>
+      </ion-item>
 
 </ion-content>

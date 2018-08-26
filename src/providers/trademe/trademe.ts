@@ -6,8 +6,6 @@ import { api_keys } from '../../api_keys';
 @Injectable()
 export class TrademeProvider {
 
-  private trademeUrl: String = `https://api.trademe.co.nz/v1/Search/Property/Rental.json?`;
-
   private auth = api_keys.trademe;
 
   constructor(public http: HttpClient) {
@@ -15,31 +13,106 @@ export class TrademeProvider {
   }
 
   //DEV
-  private test(){
-    this.request('adjacent_suburbs=false&rows=50&suburb=1486').then(data => {
-      console.log(data);
+  public test(){
+    this.print({
+      pets_ok: true
+    });
+  }
+
+  private print(req: SearchOptions){
+    this.search(req).then(data => console.log(data));
+  }
+
+  //For MVP
+  public locations(): Promise<Array<Region>> {
+    return this.request('https://api.trademe.co.nz/v1/Localities.json', '').then(data => {
+      let regions: Array<Region> = [];
+      data.forEach(region => {
+        let cities: Array<City> = [];
+        region["Districts"].forEach(city => {
+          let suburbs: Array<Suburb> = [];
+          city["Suburbs"].forEach(suburb => {
+            suburbs.push(
+              new Suburb(
+                suburb["SuburbId"],
+                suburb["Name"],
+                city["DistrictId"]
+              )
+            )
+          });
+          cities.push(
+            new City(
+              city["DistrictId"],
+              city["Name"],
+              region["LocalityId"],
+              suburbs
+            )
+          );
+        });
+        regions.push(
+          new Region(
+            region["LocalityId"],
+            region["Name"],
+            cities
+          )
+        )
+      });
+      return regions;
+    });
+  }
+
+  public suburbs(): Array<Suburb> {
+   return [
+      new Suburb(1345, "Kelburn", 47),
+      new Suburb(1486, "Te Aro", 47),
+      new Suburb(1559, "Thorndon", 47)
+    ]
+  }
+
+  public search(search_options: SearchOptions): Promise<Array<Listing>> {
+    let params = "";
+    Object.keys(search_options).forEach(key => {
+      params += `${key}=${search_options[key]}`;
+    });
+    return this.request(`https://api.trademe.co.nz/v1/Search/Property/Rental.json?`, params).then(data => {
+      return this.locations().then(locations => {
+        let items = [];
+        data["List"].forEach(element => {
+          items.push( new Listing(element, locations) );
+        });
+        return items;
+      })
     })
   }
 
-  request(requestString): Promise<Array<Listing>> {
+  private request(baseUrl: String, requestString: String): Promise<any> {
     return new Promise(res => {
       this.http.get(
-        `${this.trademeUrl}${requestString}`, { 
+        `${baseUrl}${requestString}`, { 
           headers: new HttpHeaders().set(
             'Authorization', 
             `OAuth oauth_consumer_key=${this.auth.consumerKey}, oauth_token=${this.auth.oAuthToken}, oauth_version=1.0, oauth_timestamp=1285533129, oauth_nonce=2rQiz7, oauth_signature_method=PLAINTEXT, oauth_signature=${this.auth.consumerSecret}%26${this.auth.oAuthSecret}`
           )
         }
-      ).subscribe(data => {
-        let items = [];
-        data["List"].forEach(element => {
-          items.push( new Listing(element) );
-        });
-        res(items);
-      })
+      ).subscribe(data => res(data));
     })
   }
 
+}
+
+export interface SearchOptions {
+  //suburb?: Suburb, 
+  suburb?: number,
+  city?: City, 
+  region?: Region, 
+  search_string?: String, 
+  price_min?: number, 
+  price_max?: number,
+  bedrooms_min?: number, 
+  bedrooms_max?: number, 
+  bathrooms_min?: number, 
+  bathrooms_max?: number,
+  pets_ok?: boolean
 }
 
 export class Listing {
@@ -50,7 +123,6 @@ export class Listing {
   public availableDate: Date;
   public bathrooms: number;
   public bedrooms: number;
-  public district: District;
   public endDate: Date;
   public location: Location;
   public idealTenant: String;
@@ -60,10 +132,11 @@ export class Listing {
   public rent: number;
   public type: String;
   public region: Region;
+  public city: City;
   public suburb: Suburb;
   public title: String;
 
-  constructor(obj){
+  constructor(obj, locations: Array<Region>){
     this.id = obj['ListingId'];
 
     this.address = obj['Address'];
@@ -74,7 +147,6 @@ export class Listing {
     this.availableDate = moment(obj['AvailableFrom'], 'DD/MM/YYYY').toDate();
     this.bathrooms = obj['Bathrooms'];
     this.bedrooms = obj['Bedrooms'];
-    this.district = new District(obj['District'], obj['DistrictId']);
     this.endDate = moment(obj['EndDate']).toDate();
 
     this.location = new Location(
@@ -84,7 +156,8 @@ export class Listing {
 
     this.idealTenant = obj['IdealTenant'];
     this.parking = obj['Parking'];
-    this.pets = obj['PetsOkay'];
+    this.pets = obj['PetsOkay'] != 1;
+
     this.photos = new PhotoFactory( 
       obj['PictureHref'], obj['PhotoUrls']
     ).list();
@@ -94,9 +167,23 @@ export class Listing {
     this.rent = Math.round(parseInt(rent.replace(/\D/g,'')));
 
     this.type = obj['PropertyType'];
-    this.region = new Region( obj['Region'], obj['RegionId'] );
-    this.suburb = new Suburb( obj['Suburb'], obj['SuburbId'] );
     this.title = obj['Title'];
+
+    locations.forEach(region => {
+      if( obj['RegionId'] == region.id ){
+        this.region = region;
+        region.cities.forEach(city => {
+          if( obj['DistrictId'] == city.id ){
+            this.city = city;
+            city.suburbs.forEach(suburb => {
+              if( obj['SuburbId'] == suburb.id ){
+                this.suburb = suburb;
+              }
+            })
+          }
+        });
+      }
+    });
   }
 }
 
@@ -123,16 +210,25 @@ export class Photo {
 
   constructor(private id: number){
     this.id = id;
-    this.url = `https://trademe.tmcdn.co.nz/photoserver/plus/${this.id}.jpg`
+    if(id<0)
+      this.url = 'https://i.imgur.com/6GDfMuj.png';
+    else
+      this.url = `https://trademe.tmcdn.co.nz/photoserver/plus/${this.id}.jpg`
   }
+
+  
 }
 
 class PhotoFactory {
   private photos: Array<Photo> = [];
 
   constructor(firstPhotoUrl: String, photoUrlArray: Array<String>){
-    this.photos.push( new Photo(this.parseUrlString(firstPhotoUrl)) );
-    photoUrlArray.forEach(url => this.photos.push( new Photo(this.parseUrlString(firstPhotoUrl)) ));
+    if(firstPhotoUrl && photoUrlArray){
+      this.photos.push( new Photo(this.parseUrlString(firstPhotoUrl)) );
+      photoUrlArray.forEach(url => this.photos.push( new Photo(this.parseUrlString(url)) ));
+    } else {
+      this.photos.push( new Photo(-1) );
+    }
   }
 
   private parseUrlString(string): number {
@@ -145,14 +241,14 @@ class PhotoFactory {
   }
 }
 
-export class District {
-  constructor(public name: String, public id: number){}
+export class Region {
+  constructor(public id: number, public name: String, public cities: Array<City>){}
 }
 
-export class Region {
-  constructor(public name: String, public id: number){}
+export class City {
+  constructor(public id: number, public name: String, public region: number, public suburbs: Array<Suburb>){}
 }
 
 export class Suburb {
-  constructor(public name: String, public id: number){}
+  constructor(public id: number, public name: String, public city: number){}
 }
