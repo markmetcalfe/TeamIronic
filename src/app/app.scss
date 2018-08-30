@@ -21,6 +21,16 @@
   font-family: "Roboto Light";
 }
 
+$small_mobile: "screen and (max-width:340px)";
+$mobile: "screen and (max-width:768px)";
+$not_mobile: "screen and (min-width:768px)";
+$tablet: "screen and (min-width:768px) and (max-width:991px)";
+$big_tablet: "screen and (min-width:991px) and (max-width:1200px)";
+$laptop: "screen and (min-width:1200px) and (max-width:1600px)";
+$desktop: "screen and (min-width:1600px)";
+$browser: "screen and (min-width:1200px)";
+$device: "screen and (max-width:1200px)";
+
 ion-content {
   background-image: url("../../assets/imgs/bg2.png");
   background-size: cover;

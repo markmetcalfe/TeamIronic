@@ -4,12 +4,18 @@ page-search {
     font-weight: 700;
     width: 100%;
     border-radius: 0.5em;
-    max-width: 600px;
     margin: 0 auto;
   }
   .search-btn-pos {
     position: absolute;
     bottom: 0;
     width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .scroll-content * {
+    max-width: 768px;
+    margin-left:auto;
+    margin-right:auto;
   }
 }
